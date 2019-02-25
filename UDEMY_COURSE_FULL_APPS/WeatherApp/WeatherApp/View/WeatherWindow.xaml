@@ -1,0 +1,73 @@
+﻿<Window x:Class="WeatherApp.View.WeatherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherApp.View"
+        xmlns:vm="clr-namespace:WeatherApp.ViewModel"
+        xmlns:converters="clr-namespace:WeatherApp.ViewModel.Converters"
+        mc:Ignorable="d"
+        Title="WeatherWindow" Height="480" Width="270">
+
+        <!--6) Insertamos el ViewModel en la vista a través de un nameSpace... -->
+
+<!--Recordar indicar en App.xaml que la startup Uri será WeatherWindow !!! -->
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#555555"/>
+        </Style>
+        <!--7) Inyectamos un objeto del namespace, para poder ser usado en la vista -->
+        <vm:WeatherVM x:Key="vm"/>
+        <converters:UVToStringConverter x:Key="uvToStringConverter"/>
+    </Window.Resources>
+
+    <!--8) El objeto inyectado del namespace, será el DataContext del Grid, donde lo podremos usar... -->
+    <Grid DataContext="{StaticResource vm}">
+
+    <!--9) El Datacontext del StackPanel, será ya sólamente una de las propiedades de VM...en este caso, la propiedad WEATHER -->
+        <StackPanel Margin="10"
+                    DataContext="{Binding Weather.Current_Observation}">
+            <!--Cuando usamos binding source es porque ya no queremos usar
+            el dataContext del StackPanel... Necesitamos usar otro dataContext diferente
+            al de la propiedad padre...-->
+            
+            <!--Mode por defecto -> 1 way -> c# to xaml
+            Especificando un mode 2 way hacemos un binding bidirectional-->
+            <Button Content="Refresh"
+                    Command="{Binding Source={StaticResource vm}, Path=RefreshCommand}"
+                    CommandParameter="{Binding Source={StaticResource vm},Path=Weather}"
+                    Margin="0 0 0 10"/>
+            <!--UpdateSourceTrigger=PrpertyChanged.. Digamos que en los binding bidirectionales, tendremos
+                que indicar expresamente que cada vez que cambie la propiedad (una simple letra añadida por ejemplo), tenemos que
+                actualizar el source, el código fuente, el C#..De lo contrario, por ejemplo, en un textbox se actualizaría
+                la propiedad (c#) cuando el textbox perdiera el foco-->
+            
+            <TextBox Text="{Binding Source={StaticResource vm}, Path=Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ListView Height="100"                      
+                      SelectedItem="{Binding Source={StaticResource vm}, Path=SelectedResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      ItemsSource="{Binding Source={StaticResource vm}, Path=Cities}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <TextBlock Text="{Binding Display_Location.City}"
+                       Margin="0 20 0 0"
+                       FontSize="20"
+                       FontWeight="Bold"/>
+            <TextBlock Text="{Binding Temperature_String}"
+                       FontSize="40"
+                       FontWeight="ExtraBold"
+                       Margin="0 30 0 0"/>
+            <TextBlock Text="{Binding Weather}"
+                       FontSize="15"
+                       FontWeight="DemiBold"/>
+            <TextBlock Text="{Binding UV, Converter={StaticResource uvToStringConverter}}"
+                       Margin="0 50 0 0"/>
+            <TextBlock Text="{Binding Precip_Today_String}"/>
+            <TextBlock Text="{Binding Wind_String}"/>
+        </StackPanel>
+    </Grid>
+</Window>

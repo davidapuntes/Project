@@ -1,0 +1,17 @@
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\App.g.cs
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\StylesDictionary_MarkupCompile.cache
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\StylesDictionary_MarkupCompile.lref
+C:\Users\DAVID\source\repos\StylesDictionary\bin\Debug\StylesDictionary.exe.config
+C:\Users\DAVID\source\repos\StylesDictionary\bin\Debug\StylesDictionary.exe
+C:\Users\DAVID\source\repos\StylesDictionary\bin\Debug\StylesDictionary.pdb
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\MainWindow.g.cs
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\App.baml
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\MainWindow.baml
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\ResourceDictionary\ButtonDictionary.baml
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\ResourceDictionary\LabelDictionary.baml
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\StylesDictionary.g.resources
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\StylesDictionary.Properties.Resources.resources
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\StylesDictionary.csproj.GenerateResource.cache
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\StylesDictionary.csproj.CoreCompileInputs.cache
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\StylesDictionary.exe
+C:\Users\DAVID\source\repos\StylesDictionary\obj\Debug\StylesDictionary.pdb

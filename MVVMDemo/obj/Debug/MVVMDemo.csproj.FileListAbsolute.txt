@@ -1,0 +1,16 @@
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\App.g.cs
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo_MarkupCompile.cache
+C:\Users\DAVID\source\repos\MVVMDemo\bin\Debug\MVVMDemo.exe.config
+C:\Users\DAVID\source\repos\MVVMDemo\bin\Debug\MVVMDemo.exe
+C:\Users\DAVID\source\repos\MVVMDemo\bin\Debug\MVVMDemo.pdb
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo_MarkupCompile.lref
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo.g.resources
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo.Properties.Resources.resources
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo.csproj.GenerateResource.cache
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo.csproj.CoreCompileInputs.cache
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo.exe
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo.pdb
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\MVVMDemo.csprojAssemblyReference.cache
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\View\MainWindow.g.cs
+C:\Users\DAVID\source\repos\MVVMDemo\obj\Debug\View\MainWindow.baml

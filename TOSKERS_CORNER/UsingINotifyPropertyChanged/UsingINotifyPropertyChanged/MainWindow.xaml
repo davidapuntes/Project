@@ -1,0 +1,27 @@
+﻿<Window x:Class="UsingINotifyPropertyChanged.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UsingINotifyPropertyChanged"
+        mc:Ignorable="d"
+        Title="NotifyPropertyChange Example Application" Height="450" Width="800">
+
+    <Grid Background="{Binding Background.Color}">
+        <DockPanel LastChildFill="false">
+            <StackPanel Width="150" DockPanel.Dock="Top">
+                <TextBlock Text="{Binding Person.Name, StringFormat=Welcome {0}}"/>
+                <!--Recordar, al tener UpdateSourceTrigger=PropertyChanged, cada letra
+                que pulsemos, cada cambio, se verá reflejado en el código C#....Si no lo tuviesemos,
+                tendríamos que esperar a "perder el foco", por ejemplo, pulsando en el botón de submit-->
+                <TextBox Text="{Binding Person.Name, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Content="Submit"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" DockPanel.Dock="Bottom">
+                <Button Click="Red_Clicked">Red Background</Button>
+                <Button Click="Blue_Clicked">Blue Background</Button>
+                <Button Click="Yellow_Clicked">Yellow Background</Button>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

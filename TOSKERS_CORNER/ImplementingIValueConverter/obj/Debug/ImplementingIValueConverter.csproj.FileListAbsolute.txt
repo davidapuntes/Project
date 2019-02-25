@@ -1,0 +1,15 @@
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\bin\Debug\ImplementingIValueConverter.exe.config
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\bin\Debug\ImplementingIValueConverter.exe
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\bin\Debug\ImplementingIValueConverter.pdb
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\MainWindow.g.cs
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\App.g.cs
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\ImplementingIValueConverter_MarkupCompile.cache
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\ImplementingIValueConverter_MarkupCompile.lref
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\MainWindow.baml
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\ImplementingIValueConverter.g.resources
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\ImplementingIValueConverter.Properties.Resources.resources
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\ImplementingIValueConverter.csproj.GenerateResource.cache
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\ImplementingIValueConverter.csproj.CoreCompileInputs.cache
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\ImplementingIValueConverter.exe
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\ImplementingIValueConverter.pdb
+C:\Users\DAVID\source\repos\ImplementingIValueConverter\obj\Debug\GeneratedInternalTypeHelper.g.cs
