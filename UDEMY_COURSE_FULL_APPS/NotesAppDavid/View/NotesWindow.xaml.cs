@@ -236,7 +236,7 @@ namespace NotesApp.View
         private async Task<string> UploadFile(string rtfFileLocation, string fileName)
         {
             string fileUrl = string.Empty;
-            var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=davidnoteclone;AccountKey=ZMDlzCTxhjPersuHhGUeHOJLcxg8hybp8yZK1IjH3IOoe9IInJSv/us15lIIB5MKdv0149lVWe156E/EaJw8Pw==;EndpointSuffix=core.windows.net");
+            var account = CloudStorageAccount.Parse("");
             var client = account.CreateCloudBlobClient();
             var container = client.GetContainerReference("notes");
             var blob = container.GetBlockBlobReference(fileName);
