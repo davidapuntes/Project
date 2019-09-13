@@ -209,19 +209,17 @@ namespace Presupuestea.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApplicationUserId");
+                    b.Property<string>("ApplicationUserId");
 
                     b.Property<int>("FreelancerId");
 
                     b.Property<string>("Text");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("ConversationId");
 
-                    b.HasIndex("FreelancerId");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("FreelancerId");
 
                     b.ToTable("Conversations");
                 });
@@ -307,14 +305,14 @@ namespace Presupuestea.Data.Migrations
 
             modelBuilder.Entity("Presupuestea.Data.Model.Conversation", b =>
                 {
+                    b.HasOne("Presupuestea.Data.Model.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("Presupuestea.Data.Model.Freelancers", "Freelancer")
                         .WithMany()
                         .HasForeignKey("FreelancerId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Presupuestea.Data.Model.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Presupuestea.Data.Model.Freelancers", b =>
