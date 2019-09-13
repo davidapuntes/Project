@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:local="clr-namespace:Presupuestea"  
+             x:Class="Presupuestea.Pages.ProfessionalSignUp">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Entrar" Clicked="LoginButtonClicked"/>
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Usuario"/>
+            <Entry x:Name="UsernameEntry" Placeholder="Usuario"/>
+            <Label Text="Contraseña"/>
+            <Entry x:Name="PasswordEntry" Placeholder="Contraseña"/>
+            <Label Text=" Email"/>
+            <Entry x:Name="EmailEntry" Placeholder="Email"/>
+            <Button Text="Registrarse" Clicked="SignUpButtonClicked"/>
+            <Label x:Name="errortext"/>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+
+
+
+</ContentPage>  
