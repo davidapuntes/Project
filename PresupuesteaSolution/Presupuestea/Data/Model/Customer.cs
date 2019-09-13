@@ -11,6 +11,7 @@ namespace Presupuestea.Data.Model
               public string CustomerId { get; set; }
               public string CustomerType { get; set; }
               public virtual ApplicationUser Usuario { get; set; }
+              public string isHappy { get; set; }
     }
     
 }

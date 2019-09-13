@@ -29,6 +29,7 @@ namespace Presupuestea.Data
                             Email = "davidapuntes@hotmail.com",
                             EmailConfirmed = true,
                             PostalCode = "13600",
+                            PasswordHash= "e10adc3949ba59abbe56e057f20f883e"
 
                         }
 
@@ -43,11 +44,15 @@ namespace Presupuestea.Data
                             Email = "albertoapuntes@hotmail.com",
                             EmailConfirmed = true,
                             PostalCode = "13700",
+                            PasswordHash = "e10adc3949ba59abbe56e057f20f883e"
+
 
                         }
 
                     };
 
+                    context.Customers.Add(david);
+                    context.Customers.Add(alberto);
                     context.SaveChanges();
                 }
 
@@ -80,6 +85,8 @@ namespace Presupuestea.Data
                             Email = "ramonProveedor@hotmail.com",
                             EmailConfirmed = true,
                             PostalCode = "13600",
+                            PasswordHash = "e10adc3949ba59abbe56e057f20f883e"
+
 
                         },
 
@@ -98,6 +105,8 @@ namespace Presupuestea.Data
                             Email = "franProveedor@hotmail.com",
                             EmailConfirmed = true,
                             PostalCode = "13700",
+                            PasswordHash = "e10adc3949ba59abbe56e057f20f883e"
+
 
                         },
 
@@ -118,8 +127,8 @@ namespace Presupuestea.Data
                     string abogadoId = context.Contractors.Where(c => c.Usuario.UserName == "Ramón").Select(c => c.ContractorID).FirstOrDefault();
                     string gestorId = context.Contractors.Where(c => c.Usuario.UserName == "Francisco").Select(c => c.ContractorID).FirstOrDefault();
 
-                    string davidId = context.Users.Where(c => c.UserName == "David").Select(c => c.Id).FirstOrDefault();
-                    string albertoId = context.Users.Where(c => c.UserName == "Alberto").Select(c => c.Id).FirstOrDefault();
+                    string davidId = context.Customers.Where(c => c.Usuario.UserName == "David").Select(c => c.CustomerId).FirstOrDefault();
+                    string albertoId = context.Customers.Where(c => c.Usuario.UserName == "Alberto").Select(c => c.CustomerId).FirstOrDefault();
 
 
                     var conversacion1 = new Conversation { CustomerId = davidId, ContractorId = abogadoId, Text = "Hola desde David" };
