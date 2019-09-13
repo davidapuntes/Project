@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Presupuestea.Data;
 
-namespace Presupuestea.Data.Migrations
+namespace Presupuestea.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190913174950_inicial")]
+    partial class inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,50 +205,64 @@ namespace Presupuestea.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Presupuestea.Data.Model.Contractor", b =>
+                {
+                    b.Property<string>("ContractorID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<string>("ContractorType");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<string>("UsuarioId");
+
+                    b.HasKey("ContractorID");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Contractors");
+                });
+
             modelBuilder.Entity("Presupuestea.Data.Model.Conversation", b =>
                 {
                     b.Property<int>("ConversationId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationUserId");
+                    b.Property<string>("ContractorId");
 
-                    b.Property<int>("FreelancerId");
+                    b.Property<string>("CustomerId");
 
                     b.Property<string>("Text");
 
                     b.HasKey("ConversationId");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ContractorId");
 
-                    b.HasIndex("FreelancerId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Conversations");
                 });
 
-            modelBuilder.Entity("Presupuestea.Data.Model.Freelancers", b =>
+            modelBuilder.Entity("Presupuestea.Data.Model.Customer", b =>
                 {
-                    b.Property<int>("FreelancersId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("CustomerId")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CategoryId");
+                    b.Property<string>("CustomerType");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("UsuarioId");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.HasKey("CustomerId");
 
-                    b.Property<string>("SecondName");
+                    b.HasIndex("UsuarioId");
 
-                    b.HasKey("FreelancersId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Freelancers");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Presupuestea.Data.Model.ApplicationUser", b =>
@@ -303,24 +319,34 @@ namespace Presupuestea.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Presupuestea.Data.Model.Conversation", b =>
+            modelBuilder.Entity("Presupuestea.Data.Model.Contractor", b =>
                 {
-                    b.HasOne("Presupuestea.Data.Model.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("Presupuestea.Data.Model.Freelancers", "Freelancer")
-                        .WithMany()
-                        .HasForeignKey("FreelancerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Presupuestea.Data.Model.Freelancers", b =>
-                {
-                    b.HasOne("Presupuestea.Data.Model.Category", "Categoria")
+                    b.HasOne("Presupuestea.Data.Model.Category", "Category")
                         .WithMany("Freelancers")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Presupuestea.Data.Model.ApplicationUser", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("Presupuestea.Data.Model.Conversation", b =>
+                {
+                    b.HasOne("Presupuestea.Data.Model.Contractor", "Contractor")
+                        .WithMany()
+                        .HasForeignKey("ContractorId");
+
+                    b.HasOne("Presupuestea.Data.Model.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("Presupuestea.Data.Model.Customer", b =>
+                {
+                    b.HasOne("Presupuestea.Data.Model.ApplicationUser", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
                 });
 #pragma warning restore 612, 618
         }

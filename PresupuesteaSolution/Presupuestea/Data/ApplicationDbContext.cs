@@ -11,8 +11,8 @@ namespace Presupuestea.Data
         { }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Freelancers> Freelancers { get; set; }
-        public DbSet<ApplicationUser> Users { get; set; }
+        public DbSet<Contractor> Contractors { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Conversation> Conversations { get; set; }
     
     }

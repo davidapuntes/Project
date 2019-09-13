@@ -73,7 +73,7 @@ namespace Presupuestea
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            DbInitializer.Seed(app);
+           DbInitializer.Seed(app);
 
         }
     }
