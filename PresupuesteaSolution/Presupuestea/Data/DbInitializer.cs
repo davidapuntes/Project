@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Presupuestea.Data.Model;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Presupuestea.Data
 {
@@ -18,38 +15,23 @@ namespace Presupuestea.Data
                 ApplicationDbContext context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
 
 
-                if (!context.Customers.Any())
+                if (!context.Customers.Any() && context.Users.Any())
                 {
                     var david = new Customer()
                     {
                         CustomerType = "Customer",
-                        Usuario = new ApplicationUser()
-                        {
-                            UserName = "David",
-                            Email = "davidapuntes@hotmail.com",
-                            EmailConfirmed = true,
-                            PostalCode = "13600",
-                            PasswordHash= "e10adc3949ba59abbe56e057f20f883e"
-
-                        }
+                        Usuario = context.Users.Where(u => u.Email == "davidapuntes@hotmail.com").FirstOrDefault() as ApplicationUser
+                        
 
                     };
 
                     var alberto = new Customer()
                     {
                         CustomerType = "Customer",
-                        Usuario = new ApplicationUser()
-                        {
-                            UserName = "Alberto",
-                            Email = "albertoapuntes@hotmail.com",
-                            EmailConfirmed = true,
-                            PostalCode = "13700",
-                            PasswordHash = "e10adc3949ba59abbe56e057f20f883e"
-
-
-                        }
+                        Usuario = context.Users.Where(u => u.UserName == "albertoapuntes@hotmail.com").FirstOrDefault() as ApplicationUser
 
                     };
+
 
                     context.Customers.Add(david);
                     context.Customers.Add(alberto);
@@ -70,26 +52,16 @@ namespace Presupuestea.Data
 
                 }
 
-                if (!context.Contractors.Any())
+                if (!context.Contractors.Any() && context.Users.Any())
                 {
                     int abogadoCategoryId = context.Categories.Where(c => c.Name == "Abogados").Select(c => c.CategoryID).FirstOrDefault();
                     int gestorCategoryId = context.Categories.Where(c => c.Name == "Gestores").Select(c => c.CategoryID).FirstOrDefault();
 
                     var abogado1 = new Contractor()
                     {
+
                         ContractorType = "Contractor",
-                        Usuario = new ApplicationUser()
-                        {
-
-                            UserName = "Ramón",
-                            Email = "ramonProveedor@hotmail.com",
-                            EmailConfirmed = true,
-                            PostalCode = "13600",
-                            PasswordHash = "e10adc3949ba59abbe56e057f20f883e"
-
-
-                        },
-
+                        Usuario = context.Users.Where(u => u.Email == "ramonsacristan@proveedor1.com").FirstOrDefault() as ApplicationUser,
                         CategoryId = abogadoCategoryId,
                         FirstName = "Sanuelo"
 
@@ -98,22 +70,11 @@ namespace Presupuestea.Data
                     var gestor1 = new Contractor()
                     {
                         ContractorType = "Contractor",
-                        Usuario = new ApplicationUser()
-                        {
-
-                            UserName = "Francisco",
-                            Email = "franProveedor@hotmail.com",
-                            EmailConfirmed = true,
-                            PostalCode = "13700",
-                            PasswordHash = "e10adc3949ba59abbe56e057f20f883e"
-
-
-                        },
-
+                        Usuario = context.Users.Where(u => u.Email == "franciscop@proveedor2.com").FirstOrDefault() as ApplicationUser,
                         CategoryId = gestorCategoryId,
                         FirstName = "Poveda"
 
-                    };                 
+                    };
 
                     context.Contractors.Add(abogado1);
                     context.Contractors.Add(gestor1);
@@ -124,11 +85,11 @@ namespace Presupuestea.Data
 
                 if (!context.Conversations.Any())
                 {
-                    string abogadoId = context.Contractors.Where(c => c.Usuario.UserName == "Ramón").Select(c => c.ContractorID).FirstOrDefault();
-                    string gestorId = context.Contractors.Where(c => c.Usuario.UserName == "Francisco").Select(c => c.ContractorID).FirstOrDefault();
+                    string abogadoId = context.Contractors.Where(c => c.Usuario.Email == "ramonsacristan@proveedor1.com").Select(c => c.ContractorID).FirstOrDefault();
+                    string gestorId = context.Contractors.Where(c => c.Usuario.Email == "franciscop@proveedor2.com").Select(c => c.ContractorID).FirstOrDefault();
 
-                    string davidId = context.Customers.Where(c => c.Usuario.UserName == "David").Select(c => c.CustomerId).FirstOrDefault();
-                    string albertoId = context.Customers.Where(c => c.Usuario.UserName == "Alberto").Select(c => c.CustomerId).FirstOrDefault();
+                    string davidId = context.Customers.Where(c => c.Usuario.Email == "davidapuntes@hotmail.com").Select(c => c.CustomerId).FirstOrDefault();
+                    string albertoId = context.Customers.Where(c => c.Usuario.Email == "alberto@apuntes.hotmail.com").Select(c => c.CustomerId).FirstOrDefault();
 
 
                     var conversacion1 = new Conversation { CustomerId = davidId, ContractorId = abogadoId, Text = "Hola desde David" };
@@ -151,8 +112,8 @@ namespace Presupuestea.Data
     }
 }
 
-   
-    
- 
-    
+
+
+
+
 
