@@ -16,6 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Presupuestea.Services;
 using Presupuestea.Data.Model;
+using Presupuestea.Data.Interfaces;
+using Presupuestea.Data.Repositories;
 
 namespace Presupuestea
 {
@@ -44,6 +46,11 @@ namespace Presupuestea
             services.AddIdentity<ApplicationUser, IdentityRole>()
                         .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IFreelancersRepository, FreelancerRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IConversationRepository, ConversationRepository>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
